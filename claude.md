@@ -1,40 +1,22 @@
----
-
-## AI Context (Claude / LLM Usage)
-
-This section provides a **condensed architectural context** intended for use with AI assistants
-(such as Claude or ChatGPT).
-
-The goal is to ensure AI-generated code and suggestions **follow the same architectural patterns**
-used by the team and do not introduce inconsistent designs.
-
-Developers are encouraged to paste the following context into their AI tool
-before requesting code or architectural guidance.
-
----
-
-### Architecture Context for AI
-
 You are assisting developers working under a shared backend architecture.
 
-Your role is to generate code and suggestions that follow the architectural patterns described below.
-If a suggestion would break these patterns, you must avoid it and propose a compliant alternative.
+Your task is to generate code and architectural suggestions that strictly follow the rules below.
+If a request would violate these rules, you must refuse and propose a compliant alternative.
 
 ---
 
-ARCHITECTURAL MODEL (SUMMARY)
+ARCHITECTURAL MODEL
 
-This architecture is inspired by Clean Architecture and DDD, but intentionally simplified.
-The goal is consistency, clarity, and maintainability — not theoretical purity.
+This architecture is inspired by Clean Architecture and DDD but intentionally simplified.
+The goal is consistency, clarity, and maintainability.
 
 The system is structured around four core concepts:
-
 - Entity
 - Use Case
 - Service
 - Repository
 
-Each concept has a clear responsibility and interaction boundary.
+No additional layers should be introduced unless explicitly requested.
 
 ---
 
@@ -43,7 +25,7 @@ ENTITY
 An Entity represents a domain concept with identity, state, and behavior.
 
 Rules:
-- Entities may contain persistence mapping (ORM)
+- Entities may include persistence mapping (ORM)
 - Entities hold business rules related to themselves
 - State changes happen through intent-revealing methods
 - Entities enforce their own invariants
@@ -56,7 +38,7 @@ Entities may start anemic, but the preferred direction is behavior-first.
 
 USE CASE
 
-A Use Case represents a single application action or intent.
+A Use Case represents a single application intent.
 
 Rules:
 - One use case equals one intent
@@ -76,13 +58,6 @@ Use cases are the only place where orchestration is allowed.
 SERVICE
 
 A Service represents a pluggable external or third-party capability.
-
-Examples:
-- Payment providers
-- External APIs
-- Messaging systems
-- File storage
-- Authentication providers
 
 Rules:
 - Services are always defined by interfaces
@@ -113,8 +88,6 @@ State changes always happen inside entities.
 
 INTERACTION FLOW
 
-Typical control flow:
-
 Controller / CLI / Worker
     → Use Case
         → Entity
@@ -130,8 +103,6 @@ Rules:
 
 TESTING
 
-Testing focuses primarily on unit tests.
-
 Rules:
 - Entities and use cases must be unit-testable
 - Unit tests avoid framework, database, container, and external systems
@@ -140,17 +111,17 @@ Rules:
 
 ---
 
-GENERAL RULES FOR AI OUTPUT
+GENERAL RULES
 
 When generating code or suggestions:
 - Prefer clarity over clever reuse
 - Prefer explicit intent over flags or conditionals
 - Prefer duplication over hidden coupling
-- Do not invent new layers unless explicitly requested
+- Do not invent new layers
 - Do not move orchestration into services or entities
 - Do not bypass repositories for persistence
 - Do not introduce framework logic into entities or use cases
 
-If a request conflicts with this architecture:
+If a request conflicts with these rules:
 - Explain the conflict
 - Propose a compliant alternative
