@@ -21,6 +21,8 @@ If questions arise about decisions or trade-offs, they can be discussed directly
 5. [Examples](#examples)
 6. [Frameworks](#frameworks)
    - 6.1 [Symfony](#framework-symfony)
+7. IA
+   - 7.1 [Claude](#ai-assistance-claude)
 
 ---
 
@@ -269,3 +271,32 @@ Topics include:
 - Console commands and background processes
 
 → Symfony architecture guide: [frameworks/symfony/README.md](examples/symfony.md)
+
+
+---
+
+## AI Assistance (Claude)
+
+This repository includes an **AI context file** used to keep AI-assisted development
+aligned with our architectural patterns.
+
+The file is located at:
+
+→ [`claude.md`](./claude.md)
+
+### How to use it
+
+When using Claude (or any LLM) to generate code or discuss architecture:
+
+1. Open `claude.md`
+2. Copy the **entire content**
+3. Paste it into Claude as **context / system instructions**
+4. Then ask your question or request code
+
+This ensures AI-generated suggestions follow the same rules and boundaries
+used by the team (Entity, Use Case, Service, Repository).
+
+If AI suggestions conflict with the architecture, the rules in `claude.md`
+take precedence.
+
+---
