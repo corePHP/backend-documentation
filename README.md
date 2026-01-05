@@ -268,4 +268,4 @@ Topics include:
 - Doctrine usage in relation to entities
 - Console commands and background processes
 
-→ Symfony architecture guide: [frameworks/symfony/README.md](frameworks/symfony/README.md)
+→ Symfony architecture guide: [frameworks/symfony/README.md](examples/symfony.md)
